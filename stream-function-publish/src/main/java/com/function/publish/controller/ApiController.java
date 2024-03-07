@@ -18,17 +18,16 @@ public class ApiController {
     @Autowired
     private StreamBridge bridge;
 
-    @PostMapping("/sendKafka")
-    public ApiResult<Boolean> sendKafka(@RequestBody TopicMsg msg) {
-//        boolean send = bridge.send("outputKafka-out-0", map);
+    @PostMapping("/sendKafka/{bindingName}")
+    public ApiResult<Boolean> sendKafka(@PathVariable String bindingName,@RequestBody TopicMsg msg) {
         String jsonString = JSONObject.toJSONString(msg);
-        boolean send = bridge.send(msg.getBindingName(), jsonString);
+        boolean send = bridge.send(bindingName, jsonString);
         return ApiResult.success(send);
     }
 
-    @PostMapping("/sendRabbit")
-    public ApiResult<Boolean> sendRabbit(@RequestBody TopicMsg msg) {
-        boolean send = bridge.send(msg.getBindingName(),  JSONObject.toJSONString(msg));
+    @PostMapping("/sendRabbit/{bindingName}")
+    public ApiResult<Boolean> sendRabbit(@PathVariable String bindingName, @RequestBody TopicMsg msg) {
+        boolean send = bridge.send(bindingName,  JSONObject.toJSONString(msg));
         return ApiResult.success(send);
     }
 }

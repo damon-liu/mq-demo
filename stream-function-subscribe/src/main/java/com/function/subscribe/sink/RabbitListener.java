@@ -20,7 +20,7 @@ public class RabbitListener {
     @Bean
     public java.util.function.Consumer<Message<String>> inputRabbit2() {
         return message -> {
-            log.info("inputRabbit2 message: {}", message.getPayload());
+            log.info("rabbit分组2收到消息: {}", message.getPayload());
         };
     }
 }

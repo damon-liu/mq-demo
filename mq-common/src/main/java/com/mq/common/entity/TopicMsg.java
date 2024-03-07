@@ -21,6 +21,4 @@ public class TopicMsg implements Serializable {
     private  Integer id;
 
     private String msg;
-
-    private String bindingName ;
 }
