@@ -1,0 +1,6 @@
+# Project exclude paths
+/mq-common/target/
+/mq-publish/target/
+/mq-subscribe/target/
+/stream-function-publish/target/
+/stream-function-subscribe/target/
